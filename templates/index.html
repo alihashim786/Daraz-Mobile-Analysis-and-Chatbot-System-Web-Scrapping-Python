@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products and Reviews</title>
+    <style>
+        /* CSS for button color */
+        .button {
+            background-color: red; /* Red background color */
+            color: white; /* White text color */
+            padding: 10px 20px; /* Adjust padding as needed */
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px; /* Adjust margin as needed */
+        }
+
+        /* Additional styles can be added here */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daraz Products and Reviews DataBase!</h1>
+        <div class="button-container">
+            <a class="button" href="{{ url_for('view_products') }}">View Products</a>
+            <a class="button" href="{{ url_for('view_reviews') }}">View Reviews</a>
+        </div>
+    </div>
+</body>
+</html>

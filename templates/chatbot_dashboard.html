@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_bot.css') }}">
+    <style>
+        body {
+            background-color: #ccc; /* Grey background */
+            color: #333; /* Dark text color */
+        }
+
+        .jumbotron {
+            background-color: #f8f9fa; /* Light background for the jumbotron */
+            color: #333; /* Dark text color for jumbotron */
+        }
+
+        .card {
+            background-color: #fff; /* White background for chat cards */
+            color: #333; /* Dark text color for chat cards */
+            margin-bottom: 20px;
+        }
+
+        /* Style for Product Statistics and Top 5 Products headings */
+        .product-heading {
+            color: blue; /* Red text color */
+            font-weight: bold; /* Bold text */
+            text-decoration: underline; /* Underline */
+        }
+
+        .product-content {
+            color: #333; /* Greyish-black text color */
+            font-weight: bold; /* Bold text */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1 class="display-4.main-title">CatBot</h1>
+            <p class="lead">where humour meets Artficiall Intelligence!</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Form Section -->
+                <form id="chatForm" class="mb-4" method="post" action="{{ url_for('chatbot_route') }}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Ask a question..." name="query" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Clear Chat Button -->
+                <a href="{{ url_for('chatbot_route', clear_chat=True) }}" class="btn btn-danger mb-4">Clear Chat</a>
+
+                <!-- Chat Container Section -->
+                <div id="chatContainer">
+                    {% for chat in conversation|reverse %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Your Question:</h5>
+                            <p class="card-text">{{ chat.query }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <strong>Response:</strong> {{ chat.response|safe }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Statistics and Top 5 Products Section -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2 class="product-heading">Product Statistics</h2>
+                <p class="product-content">Total Number of Listings: {{ product_statistics.total_listings }}</p>
+                <p class="product-content">Average Product Price: Rs.{{ product_statistics.avg_price }}</p>
+                <p class="product-content">Average Ratings of Products: {{ product_statistics.avg_rating }}</p>
+                <p class="product-content">Average Review Count per Product: {{ product_statistics.avg_review_count }}</p>
+                <p class="product-content">Total Questions Asked: {{ product_statistics.total_questions_asked }}</p>
+            </div>
+            <div class="col-md-6">
+                <h2 class="product-heading">Top 5 Products</h2>
+                <ul>
+                    {% for product in product_statistics.top_rated_products %}
+                    <li>
+                        <strong>{{ product[1] }}</strong> - Rating: {{ product[4] }} |
+                        <a href="{{ product[5] }}" target="_blank">View on daraz.pk</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

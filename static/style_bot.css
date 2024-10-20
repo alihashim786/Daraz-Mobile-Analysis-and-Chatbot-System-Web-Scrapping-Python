@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+
+.container-fluid {
+    padding: 20px;
+    width: 100%;
+    max-width: 1500px; /* Adjust the max-width as needed */
+}
+
+.jumbotron {
+    background-color: rgb(39, 39, 39);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1500px;
+}
+
+.card {
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}

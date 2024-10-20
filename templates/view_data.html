@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="top_Back"><a href="/">Back to Home</a></div>
+    <h1>{{ title }}</h1>
+    {{ data.to_html()|safe }}
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
