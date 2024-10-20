@@ -1,8 +1,5 @@
-# Daraz-Mobile-Analysis-and-Chatbot-System-Web-Scrapping-Python
-An advanced system for analyzing mobile products from Daraz.pk using web scraping, data analysis, and an interactive chatbot powered by natural language processing. It features a dashboard for visual insights and uses Flask for web integration.
-
-
 # Daraz Mobile Analysis and Chatbot System
+An advanced system for analyzing mobile products from Daraz.pk using web scraping, data analysis, and an interactive chatbot powered by natural language processing. It features a dashboard for visual insights and uses Flask for web integration.
 
 This project is an advanced mobile product analysis and chatbot system developed by scraping data from Daraz.pk. The system extracts data, stores it in a structured format, and provides interactive chatbot functionality for user queries. Additionally, a dashboard provides insights into mobile product trends, prices, and reviews.
 
